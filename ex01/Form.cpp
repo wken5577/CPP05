@@ -1,12 +1,12 @@
 #include "Form.hpp"
 
 Form::Form()
-:needGradeToExec(150), needGradeToSign(150), name("form"), isSign(false)
+:name("form"), isSign(false), needGradeToSign(150), needGradeToExec(150)
 {
 }
 
 Form::Form(std::string name, int needSign, int needExec)
-:name(name), needGradeToExec(needExec), needGradeToSign(needSign)
+:name(name), isSign(false), needGradeToSign(needSign), needGradeToExec(needExec)
 {
     if (needSign < 1 || needExec < 1) 
         throw Form::GradeTooHighException();
@@ -15,13 +15,16 @@ Form::Form(std::string name, int needSign, int needExec)
 }
 
 Form::Form(const Form &data)
-:name(data.name), needGradeToExec(data.needGradeToExec), \
-    needGradeToSign(data.needGradeToSign), isSign(false)
+:name(data.name), isSign(data.isSign), needGradeToSign(data.needGradeToSign) \
+    , needGradeToExec(data.needGradeToExec)
 {
 }
 
+Form::~Form(){}
+
 Form & Form::operator= (const Form &data)
 {
+    (void) data;
     return *this;
 }
 
@@ -46,12 +49,12 @@ bool Form::getIsSign() const
     return this->isSign;
 }
 
-const int Form::getNeedGradeToExec() const
+int Form::getNeedGradeToExec() const
 {
     return this->needGradeToExec;
 }
 
-const int Form::getNeedGradeToSign() const
+int Form::getNeedGradeToSign() const
 {
     return this->needGradeToSign;
 }

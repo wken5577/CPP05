@@ -23,8 +23,8 @@ public:
 
     std::string getName() const;
     bool        getIsSign() const;
-    const int   getNeedGradeToSign() const;
-    const int   getNeedGradeToExec() const;
+    int   getNeedGradeToSign() const;
+    int   getNeedGradeToExec() const;
 
     void    beSigned(Bureaucrat b);
 
